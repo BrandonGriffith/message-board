@@ -1,0 +1,9 @@
+node_modules
+Dockerfile
+dockerSetup.txt
+docker-compose*
+.dockerignore
+.git
+.gitignore
+.env*
+mongo-db

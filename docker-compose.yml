@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  node-app:
+    container_name: node-app
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    env_file:
+      - ./.env
+    command: npm run dev
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - ./mongo-db:/data/db
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - ./src/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 80:80/tcp
