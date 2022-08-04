@@ -55,13 +55,11 @@ exports.updateUser = async (req, res) => {
             new: true,
             runValidators: true,
         });
-        const sess = req.session;
-        sess.user = user;
         res.status(200).json({
             result: "success",
             data: {
-                username: sess.user.username,
-                id: sess.user._id,
+                username: user.username,
+                id: user._id,
             },
         });
     }
