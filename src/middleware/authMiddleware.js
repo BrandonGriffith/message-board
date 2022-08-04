@@ -13,3 +13,8 @@ exports.isUser = async (req, res, next) => {
     if (sess.username != "admin") req.user.username = req.body.username;
     next();
 };
+exports.confirmPass = (req, res, next) => {
+    if (!req.body.confirmPass) return res.status(400).json({result: "fail", message: "Must have confirmPass"});
+    if (req.body.password !== req.body.confirmPass) return res.status(400).json({result: "fail", message: "Passwords must match"});
+    next();
+};
