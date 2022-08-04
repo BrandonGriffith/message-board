@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.EXPRESSPORT;
 app.use(express.json());
 app.enable("trust proxy");
-// app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 app.listen(port, ()=>console.log(`Express is listening on port ${port}`));
 
 

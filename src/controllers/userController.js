@@ -13,12 +13,12 @@ exports.signUp = async (req, res) => {
         res.status(200).json({
             result: "success",
             data: {
-                user: newUser,
-                sess,
+                username: sess.user.username,
+                id: sess.user._id,
             },
         })
     }
-    catch (e) { res.status(400).json({result:"fail1", error:e}) };
+    catch (e) { res.status(400).json({result:"fail", error:e}) };
 };
 exports.getAllUsers = async (_req, res) => {
     try { 
@@ -27,7 +27,7 @@ exports.getAllUsers = async (_req, res) => {
             result: "success",
             results: users.length,
             data: {
-                users,
+                users: users.length,
             },
         });
     }
@@ -39,7 +39,8 @@ exports.getOneUser = async (req, res) => {
         res.status(200).json({
             result: "success",
             data: {
-                user,
+                username: user.username,
+                id: user._id,
             },
         });
     }
@@ -54,10 +55,13 @@ exports.updateUser = async (req, res) => {
             new: true,
             runValidators: true,
         });
+        const sess = req.session;
+        sess.user = user;
         res.status(200).json({
             result: "success",
             data: {
-                user,
+                username: sess.user.username,
+                id: sess.user._id,
             },
         });
     }
@@ -97,8 +101,8 @@ exports.login = async (req, res) => {
             correctPass,
             result: "success, you have logged in",
             data: {
-                user,
-                sess,
+                username: sess.user.username,
+                id: sess.user._id,
             },
         });
     }

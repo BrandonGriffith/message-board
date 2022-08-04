@@ -7,8 +7,9 @@ exports.auth = (req, res, next) => {
     next();
 };
 exports.isUser = async (req, res, next) => {
+    const sess = req.session.user;
     const user = await User.findById(req.params.id);
-    if (req.user.username != user.username && req.user.username != "admin") return res.status(400).json({result: "fail", message: "Wrong user"});
-    if (req.user.username != "admin") req.user.username = req.body.username;
+    if (sess.username != user.username && sess.username != "admin") return res.status(400).json({result: "fail", message: "Wrong user"});
+    if (sess.username != "admin") req.user.username = req.body.username;
     next();
 };
