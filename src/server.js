@@ -3,11 +3,12 @@ const app = express();
 const port = process.env.EXPRESSPORT;
 app.use(express.json());
 app.enable("trust proxy");
+// app.use(express.urlencoded({extended:true}));
 app.listen(port, ()=>console.log(`Express is listening on port ${port}`));
 
 
-// const postRouter = require("./routes/postRoutes");
-// const userRouter = require("./routes/userRoutes");
+const postRouter = require("./routes/postRoutes");
+const userRouter = require("./routes/userRoutes");
 
 
 const cors = require("cors");
@@ -52,6 +53,6 @@ connectToMongooseDB();
 
 
 app.route("/api/v1").get((_req,res) => res.send("<h1>BMG, Hello My Friend. This is a test.</h1>"));
-// app.use("/api/v1/posts", postRouter);
-// app.use("/api/v1/users", userRouter);
+app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/users", userRouter);
 module.exports = app;
