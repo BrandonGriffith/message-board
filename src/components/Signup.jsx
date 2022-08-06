@@ -27,7 +27,7 @@ const Signup = () => {
     };
 
     return (<>
-        <div>Signup</div>
+        <h1>Signup</h1>
         <form onSubmit={Register}>
             <div className="form-group">
                 <label htmlFor="">Username</label>
