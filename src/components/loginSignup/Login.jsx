@@ -6,7 +6,7 @@ import { useState } from 'react';
 const Login = () => {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
-    let [loginformErrors, setloginFormErrors] = useState("");
+    let [loginErrors, setLoginErrors] = useState("");
 
     const LoginUser = (e) => {
         e.preventDefault();
@@ -15,10 +15,9 @@ const Login = () => {
         axios.post("http://localhost:80/api/v1/users/login", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
-                if (res.data.error) setloginFormErrors(res.data.error);
                 // else navigate("/dashboard");
             })
-            .catch(e => console.log(e));
+            .catch(e => { if (e.response.data.message) setLoginErrors(e.response.data.message); console.log(e) });
     };
 
     return (
@@ -33,7 +32,7 @@ const Login = () => {
                     <label htmlFor="">Password</label>
                     <input type="password" name="password" id="8" className='form-control' onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <p className="text-danger">{loginformErrors}</p>
+                <p className="text-danger">{loginErrors}</p>
                 <input type="submit" value="Login" className="btn btn-success mt-3" />
             </form>
         </div>

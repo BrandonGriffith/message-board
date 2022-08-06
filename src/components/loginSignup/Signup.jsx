@@ -11,7 +11,7 @@ const Signup = () => {
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [confirmPass, setConfirmPass] = useState("");
-    let [formErrors, setFormErrors] = useState({});
+    let [formErrors, setFormErrors] = useState("");
 
     const SignupUser = (e) => {
         // let navigate = useNavigate();
@@ -20,10 +20,9 @@ const Signup = () => {
         axios.post("http://localhost:80/api/v1/users/signup", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
-                if (res.data.errors) setFormErrors(res.data.errors);
                 // else navigate("/");
             })
-            .catch(e => console.log(e))
+            .catch(e => { if (e.response.data.error.errors) { setFormErrors(e.response.data.error.errors); console.log(e) } });
     };
 
     return (<>

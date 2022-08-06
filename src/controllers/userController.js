@@ -4,10 +4,12 @@ const bcrypt = require("bcryptjs");
 
 exports.signUp = async (req, res) => {
     try {
-        if (req.body["password"]){
-            req.body["password"] = await bcrypt.hash(req.body["password"], 12);
-        }
-        const newUser = await User.create(req.body);
+        let user = req.body;
+        if (user["password"] && user["password"] == user["confirmPass"] && user.password.length >= 8){
+            user["password"] = await bcrypt.hash(user["password"], 12);
+            user['confirmPass'] = user["password"];
+        };
+        const newUser = await User.create(user);
         const sess = req.session;
         sess.user = newUser;
         res.status(200).json({
