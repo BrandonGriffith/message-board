@@ -17,7 +17,7 @@ const Signup = () => {
         let navigate = useNavigate();
         e.preventDefault();
         let formInfo = { username, firstName, lastName, email, password, confirm };
-        axios.post("http://localhost/api/users/signup", formInfo, { withCredentials: true })
+        axios.post("http://localhost/api/v1/users/signup", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 if (res.data.errors) setFormErrors(res.data.errors);
