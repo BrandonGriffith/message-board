@@ -5,11 +5,11 @@ import Signup from './Signup';
 
 const LoginSignup = () => {
     return (
-        <div>
-            <h1 className=''>Login or Signup</h1>
-            <div className='row'>
-                <div className='col'><Login /></div>
-                <div className='col'><Signup /></div>
+        <div className='col-8'>
+            <h1 className='text-center pb-4'>Login or Signup</h1>
+            <div className='row d-flex justify-content-between'>
+                <div className='col-4'><Signup /></div>
+                <div className='col-4'><Login /></div>
             </div>
         </div>
     )
