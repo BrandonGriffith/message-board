@@ -7,8 +7,10 @@ const LoginSignup = () => {
     return (
         <div>
             <div>Login_signup</div>
-            <Login />
-            <Signup />
+            <div className='row'>
+                <div className='col'><Login /></div>
+                <div className='col'><Signup /></div>
+            </div>
         </div>
     )
 };

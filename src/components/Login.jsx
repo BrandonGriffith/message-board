@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
-    let [loginformErrors, setloginFormErrors] = useState("")
+    let [loginformErrors, setloginFormErrors] = useState("");
 
     const Login = (e) => {
         e.preventDefault();
@@ -14,15 +14,13 @@ const Login = () => {
         let formInfo = { username, password };
         axios.post("http://localhost/api/v1/users/login", formInfo, { withCredentials: true })
             .then(res => {
-                console.log("response when logging in!", res)
-                if (res.data.error) {
-                    setloginFormErrors(res.data.error)
-                } else {
-                    navigate("/dashboard")
-                }
+                console.log(res);
+                if (res.data.error) setloginFormErrors(res.data.error);
+                else navigate("/dashboard");
             })
-            .catch(err => console.log("err when logging in: ", err))
-    }
+            .catch(e => console.log(e));
+    };
+
     return (
         <div>
             <h3>Login</h3>
@@ -40,6 +38,5 @@ const Login = () => {
             </form>
         </div>
     )
-}
-
-export default Login
+};
+export default Login;
