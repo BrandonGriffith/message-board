@@ -1,22 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
     let [loginformErrors, setloginFormErrors] = useState("");
 
-    const Login = (e) => {
+    const LoginUser = (e) => {
         e.preventDefault();
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
         let formInfo = { username, password };
-        axios.post("http://localhost/api/v1/users/login", formInfo, { withCredentials: true })
+        axios.post("http://localhost:80/api/v1/users/login", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 if (res.data.error) setloginFormErrors(res.data.error);
-                else navigate("/dashboard");
+                // else navigate("/dashboard");
             })
             .catch(e => console.log(e));
     };
@@ -24,7 +24,7 @@ const Login = () => {
     return (
         <div>
             <h3>Login</h3>
-            <form onSubmit={Login}>
+            <form onSubmit={LoginUser}>
                 <div className="form-group">
                     <label htmlFor="">Username</label>
                     <input type="text" name="username" id="7" className='form-control' onChange={(e) => setUsername(e.target.value)} />

@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
-    "concurrently": "^7.3.0",
     "connect-redis": "^6.1.3",
     "cors": "^2.8.5",
     "express": "^4.18.1",
@@ -22,7 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"nodemon ./src/server.js\" \"react-scripts start\"",
+    "dev": "nodemon ./src/server.js",
+    "devvv": "concurrently \"nodemon ./src/server.js\" \"react-scripts start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "concurrently": "^7.3.0"
   }
 }

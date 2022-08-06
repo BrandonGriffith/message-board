@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -13,7 +13,7 @@ const Signup = () => {
     let [confirmPass, setConfirmPass] = useState("");
     let [formErrors, setFormErrors] = useState({});
 
-    const Register = (e) => {
+    const SignupUser = (e) => {
         // let navigate = useNavigate();
         e.preventDefault();
         let formInfo = { username, firstName, lastName, email, password, confirmPass };
@@ -28,7 +28,7 @@ const Signup = () => {
 
     return (<>
         <h1>Signup</h1>
-        <form onSubmit={Register}>
+        <form onSubmit={SignupUser}>
             <div className="form-group">
                 <label htmlFor="">Username</label>
                 <input type="text" name="username" id="1" className='form-control' onChange={(e) => setUsername(e.target.value)} />
