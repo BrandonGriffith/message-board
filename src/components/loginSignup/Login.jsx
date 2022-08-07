@@ -1,21 +1,21 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
     let [loginErrors, setLoginErrors] = useState("");
+    let navigate = useNavigate();
 
     const LoginUser = (e) => {
         e.preventDefault();
-        // let navigate = useNavigate();
         let formInfo = { username, password };
         axios.post("http://localhost:80/api/v1/users/login", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
-                // else navigate("/dashboard");
+                navigate("/dashboard");
             })
             .catch(e => { if (e.response.data.message) setLoginErrors(e.response.data.message); console.log(e) });
     };

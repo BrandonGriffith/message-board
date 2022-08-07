@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -12,17 +12,20 @@ const Signup = () => {
     let [password, setPassword] = useState("");
     let [confirmPass, setConfirmPass] = useState("");
     let [formErrors, setFormErrors] = useState("");
+    let navigate = useNavigate();
 
     const SignupUser = (e) => {
-        // let navigate = useNavigate();
         e.preventDefault();
         let formInfo = { username, firstName, lastName, email, password, confirmPass };
         axios.post("http://localhost:80/api/v1/users/signup", formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
-                // else navigate("/");
+                navigate("/dashboard");
             })
-            .catch(e => { if (e.response.data.error.errors) { setFormErrors(e.response.data.error.errors); console.log(e) } });
+            .catch(e => {
+                if (e.response.data.error.errors) setFormErrors(e.response.data.error.errors);
+                if (e.response.data.error.keyValue) setFormErrors(e.response.data.error);
+            });
     };
 
     return (<>
@@ -32,6 +35,7 @@ const Signup = () => {
                 <label htmlFor="">Username</label>
                 <input type="text" name="username" id="1" className='form-control' onChange={(e) => setUsername(e.target.value)} />
                 <p className="text-danger">{formErrors.username?.message}</p>
+                <p className="text-danger">{formErrors?.keyValue?.username ? "username already exists" : null}</p>
             </div>
             <div className="form-group">
                 <label htmlFor="">First Name</label>
@@ -47,6 +51,7 @@ const Signup = () => {
                 <label htmlFor="">Email</label>
                 <input type="text" name="email" id="4" className='form-control' onChange={(e) => setEmail(e.target.value)} />
                 <p className="text-danger">{formErrors.email?.message}</p>
+                <p className="text-danger">{formErrors?.keyValue?.email ? "email already exists" : null}</p>
             </div>
             <div className="form-group">
                 <label htmlFor="">Password</label>

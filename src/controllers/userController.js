@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 exports.signUp = async (req, res) => {
     try {
         let user = req.body;
-        if (user["password"] && user["password"] == user["confirmPass"] && user.password.length >= 8){
+        if (user["password"] == user["confirmPass"] && user.password.length >= 8){
             user["password"] = await bcrypt.hash(user["password"], 12);
             user['confirmPass'] = user["password"];
         };
