@@ -115,3 +115,7 @@ exports.getLoggedInUser = async (req, res) => {
         user,
     })
 };
+exports.logout = (_req, res) => {
+    res.clearCookie("sessionCookie");
+    res.sendStatus(200);
+};
