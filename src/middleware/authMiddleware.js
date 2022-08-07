@@ -8,9 +8,10 @@ exports.auth = (req, res, next) => {
 };
 exports.isUser = async (req, res, next) => {
     const sess = req.session.user;
-    const user = await User.findById(req.params.id);
+    let user = sess;
+    if (req.params.id) user = await User.findById(req.params.id);
     if (sess.username != user.username && sess.username != "admin") return res.status(400).json({result: "fail", message: "Wrong user"});
-    if (sess.username != "admin") req.user.username = req.body.username;
+    if (sess.username != "admin" && req.body.username) req.user.username = req.body.username;
     next();
 };
 // exports.confirmPass = (req, res, next) => {

@@ -108,3 +108,10 @@ exports.login = async (req, res) => {
     }
     catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
 };
+exports.getLoggedInUser = async (req, res) => {
+    const user = req.session.user;
+    res.status(200).json({
+        result:"success",
+        user,
+    })
+};
