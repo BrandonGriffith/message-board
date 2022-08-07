@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AllPosts from './posts/AllPosts';
+import PostForm from './posts/PostForm';
 
 
 const Dashboard = () => {
     let [loggedInUser, setLoggedInUser] = useState({});
+    let [submitHandler, setSubmitHandler] = useState(false);
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -23,6 +26,8 @@ const Dashboard = () => {
         <div className="container">
             <h1>{loggedInUser?.username}'s dashboard</h1>
             <button className="btn btn-secondary" onClick={logout}>LOGOUT</button>
+            <PostForm submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} />
+            <AllPosts submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} />
         </div>
     )
 };

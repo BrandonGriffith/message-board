@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "Must have username"],
-        unique: true,
+        unique: true
     },
     firstName: {
         type: String,
@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Must have password"],
         minlength: [8, 'Password must be at least 8 characters'],
+    },
+    imgUrl: {
+        type: String
     },
 },
 {timestamps: true}
