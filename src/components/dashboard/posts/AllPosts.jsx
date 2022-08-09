@@ -54,9 +54,10 @@ const Posts = (props) => {
                                     <p className="card-text bg-dark text-light">
                                         {PostObj.Message}
                                     </p>
-                                    <button onClick={() => deletePost(PostObj._id)} className='btn btn-danger m-3'>
-                                        Delete {PostObj.title}
-                                    </button>
+                                    {props.loggedInUser._id == PostObj.User_id._id || props.loggedInUser.username == "admin" ?
+                                        <button onClick={() => deletePost(PostObj._id)} className='btn btn-danger m-3'>
+                                            Delete {PostObj.title}
+                                        </button> : null}
                                 </div>
                             </div>
                         </div>

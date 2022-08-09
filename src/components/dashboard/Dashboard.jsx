@@ -27,7 +27,7 @@ const Dashboard = () => {
             <h1>{loggedInUser?.username}'s dashboard</h1>
             <button className="btn btn-secondary" onClick={logout}>LOGOUT</button>
             <PostForm submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} />
-            <AllPosts submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} />
+            <AllPosts submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} loggedInUser={loggedInUser} />
         </div>
     )
 };
