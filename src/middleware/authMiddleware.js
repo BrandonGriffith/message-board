@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Post = require("../models/postModel");
 
 
 exports.auth = (req, res, next) => {
@@ -12,6 +13,13 @@ exports.isUser = async (req, res, next) => {
     if (req.params.id) user = await User.findById(req.params.id);
     if (sess.username != user.username && sess.username != "admin") return res.status(400).json({result: "fail", message: "Wrong user"});
     if (sess.username != "admin" && req.body.username) req.user.username = req.body.username;
+    next();
+};
+exports.isPostOwner = async (req, res, next) => {
+    const sess = req.session.user;
+    let post = await Post.findById(req.params.id);
+    console.log(post);
+    if (sess._id != post.User_id) return res.status(400).json({result: "fail", message: "Wrong user"});
     next();
 };
 // exports.confirmPass = (req, res, next) => {
