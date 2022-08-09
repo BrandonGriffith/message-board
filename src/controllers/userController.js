@@ -33,7 +33,7 @@ exports.getAllUsers = async (_req, res) => {
             },
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.getOneUser = async (req, res) => {
     try { 
@@ -46,7 +46,7 @@ exports.getOneUser = async (req, res) => {
             },
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.updateUser = async (req, res) => {
     try {
@@ -65,7 +65,7 @@ exports.updateUser = async (req, res) => {
             },
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.deleteUser = async (req, res) => {
     try { 
@@ -75,7 +75,7 @@ exports.deleteUser = async (req, res) => {
             data: null,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.login = async (req, res) => {
     try { 
@@ -106,7 +106,7 @@ exports.login = async (req, res) => {
             },
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.getLoggedInUser = async (req, res) => {
     const user = req.session.user;
