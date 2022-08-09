@@ -9,7 +9,7 @@ exports.getAllPosts = async (_req, res) => {
             posts,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.getOnePost = async (req, res) => {
     try { 
@@ -19,7 +19,7 @@ exports.getOnePost = async (req, res) => {
             post,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.createPost = async (req, res) => {
     try { 
@@ -31,7 +31,7 @@ exports.createPost = async (req, res) => {
             post,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.updatePost = async (req, res) => {
     try { 
@@ -44,7 +44,7 @@ exports.updatePost = async (req, res) => {
             post,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
 exports.deletePost = async (req, res) => {
     try { 
@@ -54,5 +54,5 @@ exports.deletePost = async (req, res) => {
             data: null,
         });
     }
-    catch (e) { res.status(400).json({result:"fail", error: e}); console.log(e); };
+    catch (e) { res.status(400).json({result:"fail", error: e}); };
 };
