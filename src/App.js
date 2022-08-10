@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import LoginSignup from './components/loginSignup/LoginSignup';
 import Dashboard from './components/dashboard/Dashboard';
+import EditPostForm from './components/dashboard/posts/EditPostForm';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginSignup/>}></Route>
-        <Route path="dashboard" element={<Dashboard/>}></Route>
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
+        <Route path="/edit/post/:_id" element={<EditPostForm/>}></Route>
         <Route path="/*" element={<Dashboard/>}></Route>
       </Routes>
     </BrowserRouter>

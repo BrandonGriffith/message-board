@@ -14,7 +14,7 @@ const Dashboard = () => {
         axios.get("http://localhost:80/api/v1/users/user", { withCredentials: true })
             .then(res => setLoggedInUser(res.data.user))
             .catch(e => { console.log(e); navigate('/') })
-    }, [])
+    }, [navigate])
 
     const logout = () => {
         axios.get("http://localhost:80/api/v1/users/logout", { withCredentials: true })
@@ -24,8 +24,10 @@ const Dashboard = () => {
 
     return (
         <div className="container">
-            <h1>{loggedInUser?.username}'s dashboard</h1>
-            <button className="btn btn-secondary" onClick={logout}>LOGOUT</button>
+            <div className='d-flex flex justify-content-between'>
+                <h1>{loggedInUser?.username}'s dashboard</h1>
+                <button className="btn btn-secondary" onClick={logout}>LOGOUT</button>
+            </div>
             <PostForm submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} />
             <AllPosts submitHandler={submitHandler} setSubmitHandler={setSubmitHandler} loggedInUser={loggedInUser} />
         </div>

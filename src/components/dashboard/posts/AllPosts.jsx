@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -54,10 +55,14 @@ const Posts = (props) => {
                                     <p className="card-text bg-dark text-light">
                                         {PostObj.Message}
                                     </p>
-                                    {props.loggedInUser._id == PostObj.User_id._id || props.loggedInUser.username == "admin" ?
+                                    {props.loggedInUser._id === PostObj.User_id._id || props.loggedInUser.username === "admin" ? <>
                                         <button onClick={() => deletePost(PostObj._id)} className='btn btn-danger m-3'>
-                                            Delete {PostObj.title}
-                                        </button> : null}
+                                            Delete
+                                        </button>
+                                        <Link to={`/edit/post/${PostObj._id}`} className='btn btn-info m-3'>
+                                            Edit
+                                        </Link>
+                                    </> : null}
                                 </div>
                             </div>
                         </div>
