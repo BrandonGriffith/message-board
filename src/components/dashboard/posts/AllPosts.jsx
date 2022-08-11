@@ -8,10 +8,10 @@ const Posts = (props) => {
 
     useEffect(() => {
         axios.get("http://localhost:80/api/v1/posts")
-            .then(response => {
-                setPostList(response.data.posts);
+            .then(res => {
+                setPostList(res.data.posts);
             })
-            .catch(error => console.log(error));
+            .catch(e => console.log(e));
     }, [props.submitHandler])
 
     const deletePost = (id) => {
