@@ -18,10 +18,10 @@ const Posts = (props) => {
         let result = window.confirm("Want to delete?");
         if (result) {
             axios.delete(`http://localhost:80/api/v1/posts/${id}`)
-                .then(_response => {
+                .then(_res => {
                     props.setSubmitHandler(!props.submitHandler);
                 })
-                .catch(error => console.log(error));
+                .catch(e => console.log(e));
         }
     };
 
