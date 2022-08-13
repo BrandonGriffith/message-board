@@ -13,7 +13,7 @@ const PostForm = (props) => {
         e.preventDefault();
         let info = { Title, Message, ImgUrl };
         axios.post("http://localhost:80/api/v1/posts", info, { withCredentials: true })
-            .then(_response => {
+            .then(_res => {
                 setTitle("");
                 setMessage("");
                 setImgUrl("");
