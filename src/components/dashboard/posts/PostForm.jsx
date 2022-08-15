@@ -6,7 +6,7 @@ const PostForm = (props) => {
     let [Title, setTitle] = useState("");
     let [Message, setMessage] = useState("");
     let [ImgUrl, setImgUrl] = useState("");
-    let [errorHandler, setErrorHandler] = useState({})
+    let [errorHandler, setErrorHandler] = useState({});
 
 
     const createPost = (e) => {
