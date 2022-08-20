@@ -1,5 +1,5 @@
 const express = require("express");
-const {auth, isPostOwner} = require("../middleware/authMiddleware")
+const {auth, isPostOwner} = require("../middleware/authMiddleware");
 const postController = require("../controllers/postController");
 const router = express.Router();
 
