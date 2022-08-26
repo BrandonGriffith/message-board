@@ -10,8 +10,6 @@ const EditPostForm = () => {
     let [ImgUrl, setImgUrl] = useState("");
     let [errorHandler, setErrorHandler] = useState({});
     let [post, setPost] = useState({});
-
-
     const { _id } = useParams();
 
 
