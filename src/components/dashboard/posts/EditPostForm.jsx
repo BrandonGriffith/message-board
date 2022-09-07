@@ -5,33 +5,34 @@ import axios from 'axios';
 
 
 const EditPostForm = () => {
-    let [Title, setTitle] = useState("");
-    let [Message, setMessage] = useState("");
-    let [ImgUrl, setImgUrl] = useState("");
     let [errorHandler, setErrorHandler] = useState({});
-    let [post, setPost] = useState({});
+    let [postInfo, setPostInfo] = useState({});
     const { _id } = useParams();
 
 
     useEffect(() => {
         axios.get(`http://localhost:80/api/v1/posts/${_id}`)
             .then(res => {
-                setPost(res.data.post);
+                setPostInfo(res.data.post);
                 console.log(res);
             })
             .catch(e => console.log(e));
-    }, [])
+    }, [_id])
 
 
-    const createPost = (e) => {
+    const changeHandler = (e) => {
+        setPostInfo({
+            ...postInfo,
+            [e.target.name]: [e.target.value]
+        })
+    }
+
+
+    const updatePost = (e) => {
         e.preventDefault();
-        let info = { Title, Message, ImgUrl };
-        axios.post("http://localhost:80/api/v1/posts", info, { withCredentials: true })
-            .then(_response => {
-                setTitle("");
-                setMessage("");
-                setImgUrl("");
-                setErrorHandler({});
+        axios.put(`http://localhost:80/api/v1/posts/${_id}`, postInfo, { withCredentials: true })
+            .then(res => {
+                console.log(res);
             })
             .catch(e => { if (e.response.data.error) setErrorHandler(e.response.data.error.errors); });
     }
@@ -41,20 +42,20 @@ const EditPostForm = () => {
             <Link to="/dashboard" className='btn btn-info'>Go to dashboard</Link>
         </div>
         <div className='d-flex justify-content-center'>
-            <form onSubmit={createPost}>
+            <form onSubmit={updatePost}>
                 <div className="form-group">
                     <label htmlFor="">Post Title</label>
-                    <input type="text" className="form-control" onChange={(e) => { setTitle(e.target.value) }} value={Title} />
+                    <input type="text" name="Title" className="form-control" onChange={(e) => { changeHandler(e) }} value={postInfo.Title} />
                     <p className="text-danger">{errorHandler.Title?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Post Message</label>
-                    <input type="text" className="form-control" onChange={(e) => { setMessage(e.target.value) }} value={Message} />
+                    <input type="text" name="Message" className="form-control" onChange={(e) => { changeHandler(e) }} value={postInfo.Message} />
                     <p className="text-danger">{errorHandler.Message?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Add ImgUrl</label>
-                    <input type="text" className="form-control" onChange={(e) => { setImgUrl(e.target.value) }} value={ImgUrl} />
+                    <input type="text" name="ImgUrl" className="form-control" onChange={(e) => { changeHandler(e) }} value={postInfo.ImgUrl} />
                     <p className="text-danger">{errorHandler.ImgUrl?.message}</p>
                 </div>
                 <input type="submit" className='btn btn-success' value="Update Post" />
