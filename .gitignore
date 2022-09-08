@@ -10,7 +10,9 @@ node_modules
 
 # production
 /build
+nginx
 nginx.conf
+default.conf
 
 # misc
 .DS_Store
