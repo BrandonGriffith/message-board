@@ -12,7 +12,7 @@ const EditPostForm = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:80/api/v1/posts/${_id}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${_id}`)
             .then(res => {
                 setPostInfo(res.data.post);
                 console.log(res);
@@ -32,7 +32,7 @@ const EditPostForm = () => {
     const updatePost = (e) => {
         e.preventDefault();
         console.log(postInfo);
-        axios.put(`http://localhost:80/api/v1/posts/${_id}`, postInfo, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${_id}`, postInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 navigate("/dashboard");

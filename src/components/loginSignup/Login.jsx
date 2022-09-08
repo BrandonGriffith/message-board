@@ -12,7 +12,7 @@ const Login = () => {
     const LoginUser = (e) => {
         e.preventDefault();
         let formInfo = { username, password };
-        axios.post("http://localhost:80/api/v1/users/login", formInfo, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/login`, formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 navigate("/dashboard");

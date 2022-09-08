@@ -12,7 +12,7 @@ const PostForm = (props) => {
     const createPost = (e) => {
         e.preventDefault();
         let info = { Title, Message, ImgUrl };
-        axios.post("http://localhost:80/api/v1/posts", info, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts`, info, { withCredentials: true })
             .then(_res => {
                 setTitle("");
                 setMessage("");

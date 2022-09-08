@@ -17,7 +17,7 @@ const Signup = () => {
     const SignupUser = (e) => {
         e.preventDefault();
         let formInfo = { username, firstName, lastName, email, password, confirmPass };
-        axios.post("http://localhost:80/api/v1/users/signup", formInfo, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/signup`, formInfo, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 navigate("/dashboard");
