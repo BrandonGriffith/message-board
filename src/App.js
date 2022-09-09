@@ -1,6 +1,6 @@
 import './App.css';
 import {
-  HashRouter,
+  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -11,14 +11,14 @@ import EditPostForm from './components/dashboard/posts/EditPostForm';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginSignup/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/edit/post/:_id" element={<EditPostForm/>}></Route>
         <Route path="/*" element={<Dashboard/>}></Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 export default App;
