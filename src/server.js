@@ -56,8 +56,10 @@ app.route("/api/v1").get((_req,res) => res.send("<h1>BMG, Hello My Friend. This 
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
 
+
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'build')));
 app.route('/*').get((req, res) => res.sendFile(path.join(__dirname, 'build', 'index.html')));
+
 
 module.exports = app;
