@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginSignup/>}></Route>
+        <Route path="/" element={<Dashboard/>}></Route>
         <Route path="/login" element={<LoginSignup/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/edit/post/:_id" element={<EditPostForm/>}></Route>

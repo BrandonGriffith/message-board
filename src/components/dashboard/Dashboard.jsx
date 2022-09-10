@@ -13,12 +13,12 @@ const Dashboard = () => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/user`, { withCredentials: true })
             .then(res => setLoggedInUser(res.data.user))
-            .catch(e => { console.log(e); navigate('/') })
+            .catch(e => { console.log(e); navigate('/login') })
     }, [navigate])
 
     const logout = () => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/users/logout`, { withCredentials: true })
-            .then(navigate('/'))
+            .then(navigate('/login'))
             .catch()
     };
 
