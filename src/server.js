@@ -13,6 +13,9 @@ const userRouter = require("./routes/userRoutes");
 
 const cors = require("cors");
 const corsOptions = {
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST',
     origin: process.env.CORS_URL,
     credentials: true,
 };
