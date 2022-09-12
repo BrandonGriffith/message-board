@@ -36,7 +36,6 @@ const mySession = session({
     cookie: {
         secure: false,
         httpOnly: false,
-        sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 7
         },
     },
