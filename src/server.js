@@ -34,8 +34,8 @@ const mySession = session({
     cookie: {
         sameSite: 'None',
         secure: false,
-        httpOnly: true,
-        maxAge: 300000 * 9000 * 9000,
+        httpOnly: false,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
         },
     },
 );
