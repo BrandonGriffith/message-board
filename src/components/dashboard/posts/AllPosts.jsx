@@ -7,7 +7,7 @@ const Posts = (props) => {
     const [PostList, setPostList] = useState([]);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts`, { withCredentials: true })
             .then(res => {
                 setPostList(res.data.posts);
             })
@@ -17,7 +17,7 @@ const Posts = (props) => {
     const deletePost = (id) => {
         let result = window.confirm("Want to delete?");
         if (result) {
-            axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${id}`)
+            axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${id}`, { withCredentials: true })
                 .then(_res => {
                     props.setSubmitHandler(!props.submitHandler);
                 })

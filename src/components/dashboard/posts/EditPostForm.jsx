@@ -12,7 +12,7 @@ const EditPostForm = () => {
 
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${_id}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/posts/${_id}`, { withCredentials: true })
             .then(res => {
                 setPostInfo(res.data.post);
                 console.log(res);
