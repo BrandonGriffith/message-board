@@ -14,6 +14,8 @@ const userRouter = require("./routes/userRoutes");
 const cors = require("cors");
 const corsOptions = {
     origin: process.env.CORS_URL.split(", "),
+    "Access-Control-Allow-Headers": '*',
+    "Access-Control-Allow-Methods": '*',
     credentials: true,
 };
 app.use(cors(corsOptions));
@@ -34,7 +36,6 @@ const mySession = session({
     cookie: {
         secure: false,
         httpOnly: false,
-        sameSite: 'none',
         maxAge: 1000 * 60 * 60 * 24 * 7
         },
     },
