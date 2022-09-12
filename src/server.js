@@ -33,7 +33,7 @@ const mySession = session({
     saveUninitialized: false,
     cookie: {
         sameSite: 'None',
-        secure: true,
+        secure: false,
         httpOnly: true,
         maxAge: 300000 * 9000 * 9000,
         },
