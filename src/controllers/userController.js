@@ -89,7 +89,7 @@ exports.login = async (req, res) => {
         };
         const correctPass = await bcrypt.compare(req.body["password"], user.password);
         if (!correctPass){
-            return res.status(400).json({
+            return res.cookie({sameSite: 'none', secure: true}).status(400).json({
                 correctPass,
                 result: "fail",
                 message: "password is not correct",
